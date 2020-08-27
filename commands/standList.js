@@ -1,8 +1,7 @@
 const Discord = require("discord.js")
-const botconfig = require("../botsettings.json");
+const prefix = require("../botsettings.json");
 const db = require("quick.db")
 module.exports.run = async (bot, message, args) => {
-    let prefix = await db.get(`prefix_${message.guild.id}`);
     const stands = new Discord.MessageEmbed()
         .setTitle(`Stand List`)
         .setColor(0x2f3136)

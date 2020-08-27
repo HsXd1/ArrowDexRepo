@@ -1,12 +1,8 @@
 const Discord = require("discord.js")
-const botconfig = require("../botsettings.json");
-const db = require('quick.db')
 module.exports.run = async (bot, message, args) => {
-    let prefixofServer = db.get(`prefix_${message.guild.id}`)
     let randomColor = Math.floor(Math.random() * 16777214) + 1
     const help = new Discord.MessageEmbed()
         .setTitle("Help:")
-        .setDescription(`This server's prefix is ${prefixofServer}`)
         .setColor(randomColor)
         .addFields({
             name: "One word Stand",

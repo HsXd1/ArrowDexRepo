@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const default_prefix = require('./botsettings.json');
+const prefix = require('./botsettings.json');
 const bot = new Discord.Client({
     disableEveryone: true
 });
@@ -37,16 +37,11 @@ bot.on('ready', () => {
     }, 1800000);
 })
 bot.on("message", async message => {
-    let prefix = await db.get(`prefix_${message.guild.id}`);
-    if (prefix === null) {
-        prefix = default_prefix;
-    }
-    
     if (message.content === '<@!713462801678598164>') {
-        return message.channel.send(`The prefix for Arrow Dex in this server is \`${prefix}\`. (Example: \`s?help\`)`)
+        return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
     }
-    if (message.content === prefix) {
-        return message.channel.send(`The prefix for Arrow Dex in this server is \`${prefix}\`. (Example: \`s?help\`)`)
+    if (message.content === 's?') {
+        return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
     }
 
     if (message.author.bot || message.channel.type === "dm") return;
@@ -60,5 +55,5 @@ bot.on("message", async message => {
     if (commandfile) commandfile.run(bot, message, args)
     console.log(`${message.author.username} used ${cmd} in ${message.guild.name}`)
 })
-bot.login('NzEzNDYyODAxNjc4NTk4MTY0.XsgeAw.10vF91iW_iDWIeMFzYBwzZoiPy8');
-// process.env.token
+bot.login(process.env.token);
+// 

@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const prefix = require("../botsettings.json");
-const db = require("quick.db")
 module.exports.run = async (bot, message, args) => {
     const stands = new Discord.MessageEmbed()
         .setTitle(`Stand List`)

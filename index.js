@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
-const prefix = require('./botsettings.json');
+const botsettings = require('./botsettings.json');
 const bot = new Discord.Client({
     disableEveryone: true
 });
 const DBL = require("dblapi.js")
 const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxMzQ2MjgwMTY3ODU5ODE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTkyNTAxMDQ3fQ.6boC1m7UE0Pj0xP06tEghpSiCWPcisA4MotOr_Wg9Cw', bot)
-const db = require('quick.db')
 
 require("./util/eventHandler")(bot)
 
@@ -37,23 +36,22 @@ bot.on('ready', () => {
     }, 1800000);
 })
 bot.on("message", async message => {
-    if (message.content === '<@!713462801678598164>') {
-        return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
-    }
-    if (message.content === 's?') {
-        return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
-    }
-
-    if (message.author.bot || message.channel.type === "dm") return;
-
+    
+    if(message.author.bot || message.channel.type === "dm") return;
+     if (message.content === '<@!713462801678598164>') {
+         return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
+     }
+     if (message.content === 's?') {
+         return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
+     }
+    let prefix = botsettings.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
-    let args = messageArray.slice(1);
+    let args = message.content.substring(message.content.indexOf(' ')+1);
 
     if(!message.content.startsWith(prefix)) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
-    if (commandfile) commandfile.run(bot, message, args)
+    if(commandfile) commandfile.run(bot,message,args)
     console.log(`${message.author.username} used ${cmd} in ${message.guild.name}`)
 })
 bot.login(process.env.token);
-// 

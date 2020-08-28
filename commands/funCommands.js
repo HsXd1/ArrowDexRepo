@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const botconfig = require("../botsettings.json");
+;
 
 module.exports.run = async (bot, message, args) => {
     let randomColor = Math.floor(Math.random() * 16777214) + 1

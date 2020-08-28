@@ -1,6 +1,4 @@
 const Discord = require("discord.js")
-const botconfig = require("../botsettings.json");
-
 module.exports.run = async (bot, message, args) => {
     const stand = new Discord.MessageEmbed()
                 .setTitle('')

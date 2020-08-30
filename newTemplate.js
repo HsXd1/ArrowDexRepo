@@ -2,15 +2,17 @@ const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
     const stand = new Discord.MessageEmbed()
-        .setAuthor('Josuke Higashikata', 'https://vignette.wikia.nocookie.net/jjba/images/2/24/JosukeAnime.PNG/revision/latest?cb=20171212081940', 'https://jojo.fandom.com/wiki/Josuke_Higashikata')
-        .setTitle('Crazy Diamond')
-        .setURL('https://jojo.fandom.com/wiki/Crazy_Diamond')
-        .setColor(0xFF007A)
-        .setDescription("** **")
-        .setThumbnail('https://vignette.wikia.nocookie.net/jjba/images/2/24/JosukeAnime.PNG/revision/latest?cb=20171212081940')
+        .setAuthor('Stand User', 'Image of Stand User', 'Link to Stand User Wiki Page')
+        .setTitle('Stand Name')
+        .setURL('Link To Stand Wiki Page')
+        .setColor('Stand Color Here. (Remove this and replace it with 0x____)')
+        .setThumbnail('Stand User Image Here')
         .addFields({
             name: 'Synopsis:',
-            value: "**Crazy Diamond** is the Stand of **Josuke Higashikata** featured in *Part 4: Diamond is Unbreakable*. Crazy Diamond is humanoid with a pink muscular body and silver armor."
+            value: "**Stand  Name** is the Stand of **User Name** featured in *Part 4: Diamond is Unbreakable*. Crazy Diamond is humanoid with a pink muscular body and silver armor."
+        }, {
+            name: "\u200B",
+            value: "\u200B"
         }, {
             name: 'Namesake:',
             value: '*Shine On You Crazy Diamond (Pink Floyd Song)*  \n ** ** \n **Localized Name**: \n Shining Diamond',
@@ -34,5 +36,5 @@ module.exports.config = {
     description: "Gives info on Crazy Diamond",
     usage: "s?crazyDiamond",
     accessableby: "Members",
-    aliases: ['crazyDiamond', 'josuke']
+    aliases: ['crazyDiamond', 'josuke', 'cd']
 }

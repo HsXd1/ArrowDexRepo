@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
                 .setImage('https://vignette.wikia.nocookie.net/jjba/images/d/dc/Brain_Storm.png/revision/latest?cb=20190718161837')
                 .setTimestamp()
                 .setFooter('Brain Storm')
-            message.channel.send(stand)
+            message.channel.send(brainStorm)
 }
 
 module.exports.config = {

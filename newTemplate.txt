@@ -1,0 +1,48 @@
+const Discord = require("discord.js")
+
+module.exports.run = async (bot, message, args) => {
+    const stand = new Discord.MessageEmbed()
+        .setAuthor('', '', '') // Order: ('Stand User', 'Image of Stand User', 'Link to Stand User Wiki Page')
+        .setTitle('') // Stand Name
+        .setURL('') // Link to Stand wiki page
+        .setColor('') // Stand Color here 
+        .setThumbnail('') // Stand user image here
+        .addFields({
+            name: 'Synopsis:',
+            value: "**Stand  Name** is the Stand of **User Name** featured in *Part (): (Stand name part)*. Copy and paste appearence here" // Example: **Crazy Diamond** is the Stand of **Josuke Higashikata** featured in *Part 4: Diamond is Unbreakable*. Crazy Diamond is humanoid with a pink muscular body and silver armor.
+        }, {
+            name: "\u200B",
+            value: "\u200B" // Don't touch this
+        }, {
+            name: 'Namesake:',
+            value: `*Music Reference Here (Song name / Album Here) *  \n ** ** \n **Localized Name**: \n Localized name`, // Example: *Shine On You Crazy Diamond (Pink Floyd Song)*  \n ** ** \n **Localized Name**: \n Shining Diamond
+            inline: true
+        }, {
+            name: 'Stats:', // Put the stand stats between the stars
+            value: '*Destructive Power:* ** ** \n *Speed:* ** **  \n *Range:* ** ** \n *Durability:* ** ** \n *Precision:* ** ** \n *Development Potential:* ** **', // Example: *Destructive Power:* **A** \n *Speed:* **A**  \n *Range:* **D** \n *Durability:* **B** \n *Precision:* **B** \n *Development Potential:* **C**
+            inline: true
+        }, {
+            name: 'Abilities:', // Explain each abilities in bullet points (Copy and paste if more needed)
+            value: "●  \n ●  \n ● \n ●  \n ● "
+        })
+        .setImage('') // image or gif of stand
+        .setTimestamp()
+        .setFooter('') // name of stand 
+    message.channel.send(stand)
+}
+
+module.exports.config = {
+    name: "",  // name of the stand
+    description: "", // can be clear
+    usage: "s?", // name for the stand next to the s?
+    accessableby: "Members",
+    aliases: [''] // put the user's first name here, and localized name
+}
+
+// Stand Parts
+// Part3: Stardust Crusaders
+// Part 4: Crazy Diamond
+// Part 5: Vento Aureo
+//  Part 6: Stone Ocean
+//  Part 7: Steel Ball Run
+//  Part 8: Jojolion

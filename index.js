@@ -6,6 +6,7 @@ const bot = new Discord.Client({
 const DBL = require("dblapi.js")
 const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxMzQ2MjgwMTY3ODU5ODE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTkyNTAxMDQ3fQ.6boC1m7UE0Pj0xP06tEghpSiCWPcisA4MotOr_Wg9Cw', bot)
 
+
 require("./util/eventHandler")(bot)
 
 const fs = require("fs");
@@ -49,9 +50,17 @@ bot.on("message", async message => {
     let cmd = messageArray[0];
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
+
+
     if(!message.content.startsWith(prefix)) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
     if(commandfile) commandfile.run(bot,message,args)
-    console.log(`${message.author.username} used ${cmd} in ${message.guild.name}`)
+
+    if (message.content.startsWith(prefix)) {
+        const logchannel = bot.channels.cache.get('751690728156954654');
+        logchannel.send(`\`${message.author.username}\` used \`${message.content}\` in \`${message.guild.name}\``);
+        console.log(`${message.author.username}\` used \`${message.content}\` in \`${message.guild.name}`);
+     }
+     
 })
 bot.login(process.env.token);

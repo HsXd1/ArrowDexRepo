@@ -37,7 +37,7 @@ bot.on('ready', () => {
     }, 1800000);
 })
 bot.on("message", async message => {
-    
+
     if(message.author.bot || message.channel.type === "dm") return;
      if (message.content === '<@!713462801678598164>') {
          return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
@@ -58,9 +58,20 @@ bot.on("message", async message => {
 
     if (message.content.startsWith(prefix)) {
         const logchannel = bot.channels.cache.get('751690728156954654');
-        logchannel.send(`\`${message.author.username}\` used \`${message.content}\` in \`${message.guild.name}\``);
+        const logChannelEmbed = new Discord.MessageEmbed()
+        .setTitle('Command Used!')
+        .setColor(randomColor)
+        .addFields({
+          name: 'User:', value: `\`${message.author.tag}\``
+        }, {
+          name: 'Command Used:', value: `\`${message.content}\``
+        }, {
+          name: 'Server:', value: `\`${message.guild.name}\``
+        })
+        .setTimestamp()
+        logchannel.send(logChannelEmbed);
         console.log(`${message.author.username}\` used \`${message.content}\` in \`${message.guild.name}`);
      }
-     
+
 })
 bot.login(process.env.token);

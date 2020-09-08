@@ -5,7 +5,7 @@ const bot = new Discord.Client({
 });
 const DBL = require("dblapi.js")
 const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxMzQ2MjgwMTY3ODU5ODE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTkyNTAxMDQ3fQ.6boC1m7UE0Pj0xP06tEghpSiCWPcisA4MotOr_Wg9Cw', bot)
-
+const randomColor = Math.floor(Math.random() * 16777214) + 1
 
 require("./util/eventHandler")(bot)
 

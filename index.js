@@ -2,16 +2,10 @@ const Discord = require('discord.js');
 const bot = new Discord.Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
-const {
-    loadCommands
-} = require('./util/loadCommands')
+const botsettings = require("./botsettings.json")
+const {loadCommands} = require('./util/loadCommands')
 const mongoose = require('mongoose');
-const prefix = require('./models/prefix');
-mongoose.connect('mongodb+srv://hsxd:ninjago90@arrowdex.iegn3.mongodb.net/Data', { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-});
-
+const prefix = botsettings.prefix
 
 const DBL = require("dblapi.js")
 const dbl = new DBL ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxMzQ2MjgwMTY3ODU5ODE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTkyNTAxMDQ3fQ.6boC1m7UE0Pj0xP06tEghpSiCWPcisA4MotOr_Wg9Cw', bot)
@@ -33,31 +27,15 @@ bot.on('ready', () => {
 bot.on("message", async message => {
     if (message.author.bot) return;
 
-    //Getting the data from the model
-    const data = await prefix.findOne({
-        GuildID: message.guild.id
-    });
 
     const messageArray = message.content.split(' ');
     const cmd = messageArray[0];
     const args = messageArray.slice(1);
 
-    //If there was a data, use the database prefix BUT if there is no data, use the default prefix which you have to set!
-    if(data) {
-        const prefix = data.Prefix;
-
-        if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix)) return;
         const commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)));
         commandfile.run(bot, message, args);
-    } else if (!data) {
-        //set the default prefix here
-        const prefix = "s?";
-
-        if (!message.content.startsWith(prefix)) return;
-        const commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)));
-        commandfile.run(bot, message, args);
-
-    }
+    
     if (message.content === '<@!713462801678598164>') {
         return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
     }
@@ -66,7 +44,7 @@ bot.on("message", async message => {
     }
    
     if (message.content.startsWith(prefix)) {
-       const logchannel = bot.channels.cache.get('751690728156954654');
+       const logchannel = bot.channels.cache.get('764172246004138017');
        const logChannelEmbed = new Discord.MessageEmbed()
        .setTitle('Command Used!')
        .setColor(randomColor)
@@ -84,4 +62,4 @@ bot.on("message", async message => {
 })
 
 
-bot.login(process.env.token);
+bot.login("NzEzNDYyODAxNjc4NTk4MTY0.XsgeAw.X8abVjI7r_oUONfdMHbQvFYKiZM");

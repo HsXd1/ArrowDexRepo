@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    ws: {
+        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_EMOJIS', 'GUILD_INTEGRATIONS', 'GUILD_WEBHOOKS']
+    }
 });
 const botsettings = require("./botsettings.json")
 const {loadCommands} = require('./util/loadCommands')

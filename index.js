@@ -39,7 +39,6 @@ bot.on("message", async message => {
     if (message.content === '<@!713462801678598164>') {
         return message.channel.send('The prefix for Arrow Dex in this server is `s?`. (Example: `s?help`)')
     }
-   
     if (message.content.startsWith(prefix)) {
        const logchannel = bot.channels.cache.get('764172246004138017');
        const logChannelEmbed = new Discord.MessageEmbed()
@@ -57,6 +56,5 @@ bot.on("message", async message => {
        console.log(`${message.author.username}\` used \`${message.content}\` in \`${message.guild.name}`);
     }
 })
-
 
 bot.login(process.env.token);

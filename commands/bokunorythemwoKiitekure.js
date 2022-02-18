@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.config = {
-    name: "bokuNoRhythmWoKiitekure",
+    name: "bokuNoRhythmWoKiiteKure",
     description: "",
     usage: "s?bokunorhythmwoKiitekure",
     accessableby: "Members",
